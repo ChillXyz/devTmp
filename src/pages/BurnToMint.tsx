@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
-import { useAccount, useWriteContract, useContractReads } from 'wagmi';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useNavigate } from 'react-router-dom';
+import { useAccount, useContractReads, useWriteContract } from 'wagmi';
 import Navbar from '../components/Navbar';
+import { ConnectWallet } from '../components/ConnectWallet';
 import '../assets/css/burn-to-mint.css';
 
 // ERC721 ABI for tokenOfOwnerByIndex, tokenURI, setApprovalForAll, and isApprovedForAll functions
@@ -105,7 +105,7 @@ const TINY_FROGS_ADDRESS = '0x7e6eef5388261973b0a1aa14e1ca5bbb11cc9a90' as const
 const FROG_BURNER_ADDRESS = '0x16BDf5c8395c3CBBBa559Cd1A7beA668c23B7c33' as const;
 
 const BurnToMint = () => {
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
   const { address } = useAccount();
   const [selectedFrogs, setSelectedFrogs] = useState<string[]>([]);
   const [fantomFrogFamily, setFantomFrogFamily] = useState<NFT[]>([]);
@@ -461,40 +461,10 @@ const BurnToMint = () => {
 
             <div className="w-layout-vflex web3thingydesoputitinherewowpauseimeannvm">
               <div className="w-layout-vflex flex-block-6">
-                <div className="subtitle" style={{ fontSize: '1.2vw' }}>
-                  BURN <span className="green">FROGS</span> FOR <span className="green">$FROQ</span>
+                <div className="subtitle">BURN <span className="green">FROGS </span>FOR <span className="green">$FROQ</span></div>
+                <div className="flex items-center justify-center">
+                  <ConnectWallet />
                 </div>
-                <ConnectButton.Custom>
-                  {({
-                    account,
-                    chain,
-                    openConnectModal,
-                    openAccountModal,
-                    mounted,
-                  }) => {
-                    const connected = mounted && account && chain;
-
-                    return (
-                      <div
-                        {...(!mounted && {
-                          'aria-hidden': true,
-                          style: {
-                            opacity: 0,
-                            pointerEvents: 'none',
-                            userSelect: 'none',
-                          },
-                        })}
-                        onClick={connected ? openAccountModal : openConnectModal}
-                        className="connectwallet"
-                        style={{ cursor: 'pointer' }}
-                      >
-                        <div className="body-text black">
-                          {connected ? account.displayName : 'Connect wallet'}
-                        </div>
-                      </div>
-                    );
-                  }}
-                </ConnectButton.Custom>
               </div>
 
               {/* Fantom Frog Family Section */}

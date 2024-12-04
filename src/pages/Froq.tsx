@@ -3,13 +3,13 @@ import { useAccount, useBalance, useWriteContract, useChainId, useSwitchChain } 
 import { parseEther } from 'viem';
 import { fantom } from 'wagmi/chains';
 import Navbar from '../components/Navbar';
+import { ConnectWallet } from '../components/ConnectWallet';
 import backgroundImage from '../assets/images/Frame-961.svg';
 import equalsIcon from '../assets/images/equals.png';
 import vector1 from '../assets/images/Vector-1.svg';
 import vector2 from '../assets/images/Vector-2.svg';
 import vector from '../assets/images/Vector.svg';
 import logo from '../assets/images/logowithoutbg.svg';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import presaleAbi from '../abi/presale.json';
 
 // Constants
@@ -102,167 +102,93 @@ const Froq = () => {
     <div>
       <Navbar />
       <div className="section-froq-header">
-        <div>
-          <div className="container-froq-header">
-            <div className="flex-block-5">
-              <h1 className="h2-projects align-left">$<span className="green">FROQ</span></h1>
-              <p className="paragraph">Join Froqorion’s next chapter by securing your $FROQ—the token powering our universe. </p>
-              <p className="paragraph"> 💧 100% of funds raised go to liquidity for a strong and stable start. </p>
-              <p className="paragraph">🕒 Whitelist: Dec 2, 5:45 PM UTC+1</p>
-              <p className="paragraph">🕒 Public Sale: Dec 2, 6:00 PM UTC+1</p>
-              <p className="paragraph"> 💰 Price: 1 $FROQ = 0.3 $FTM</p>
-              <p className="paragraph">Don’t miss your chance to be part of Froqorion’s future!</p>
+        <div className="container-froq-header">
+          <div className="flex-block-5">
+            <h1 className="h2-projects align-left">$<span className="green">FROQ</span></h1>
+            <p className="paragraph">Join Froqorion's next chapter by securing your $FROQ—the token powering our universe. </p>
+            <p className="paragraph"> 💧 100% of funds raised go to liquidity for a strong and stable start. </p>
+            <p className="paragraph">🕒 Whitelist: Dec 2, 5:45 PM UTC+1</p>
+            <p className="paragraph">🕒 Public Sale: Dec 2, 6:00 PM UTC+1</p>
+            <p className="paragraph"> 💰 Price: 1 $FROQ = 0.3 $FTM</p>
+            <p className="paragraph">Don't miss your chance to be part of Froqorion's future!</p>
+          </div>
+          <div className="web3thingydesoputitinherewowpauseimeannvm">
+            <div className="flex-block-6">
+              <div className="subtitle">CURRENTLY RAISED</div>
+              <div className="display">{totalRaised.toLocaleString()} <span className="green">$FTM</span></div>
             </div>
-            <div className="web3thingydesoputitinherewowpauseimeannvm">
-              <div className="flex-block-6">
-                <div className="subtitle">CURRENTLY RAISED</div>
-                <div className="display">{totalRaised.toLocaleString()} <span className="green">$FTM</span></div>
-              </div>
-              <div className="ftm">
-                <div 
-                  className="div-block-2" 
-                  style={{
-                    width: `${progressPercentage}%`,
-                    backgroundColor: '#14B951',
-                    height: '100%',
-                    borderRadius: '100vw',
-                    transition: 'width 0.5s ease-in-out'
-                  }}
-                ></div>
-                <div className="subtitle hardcap">{HARDCAP.toLocaleString()} $FTM</div>
-              </div>
-              <div className="flex-block-9" style={{ display: 'flex', gap: '10px' }}>
-                <button 
-                  onClick={handleFrogMode} 
-                  style={{ 
-                    width: '8vw',
-                    cursor: 'pointer', 
-                    border: '1px solid #14B951',
-                    background: '#14B951',
-                    padding: '0.556vw',
-                    borderRadius: '100vw',
-                    color: 'black',
-                    fontSize: '0.856vw',
-                    fontFamily: 'inherit',
-                    outline: 'none',
-                    transition: 'all 0.3s ease',
-                    textTransform: 'none',
-                    boxShadow: 'none',
-                    WebkitAppearance: 'none',
-                    MozAppearance: 'none'
-                  }}
-                >
-                  Frog mode
-                </button>
-                {isConnected && balance && (
-                  <div className="subtitle" style={{ color: '#14B951' }}>
-                    {Number(balance.formatted).toLocaleString()} $FTM
-                  </div>
-                )}
-                <div className="flex-block-7">
-                  <div className="div-block" style={{ 
-                    border: '1px solid #14B951',
-                    borderRadius: '100vw',
-                    padding: '1.111vw 1.111vw 1.111vw 2.222vw',
-                    background: 'transparent',
-                    width: '100%'
-                  }}>
-                    <input
-                      type="number"
-                      value={inputAmount}
-                      onChange={(e) => {
-                        const value = Math.min(Number(e.target.value), MAX_CONTRIBUTION);
-                        setInputAmount(value);
-                      }}
-                      style={{
-                        background: 'transparent',
-                        border: 'none',
-                        outline: 'none',
-                        color: '#14B951',
-                        fontSize: 'inherit',
-                        fontFamily: 'inherit',
-                        padding: 0,
-                      }}
-                      min="0"
-                      max={MAX_CONTRIBUTION}
-                    />
-                    <div className="subtitle">$FTM</div>
-                  </div>
-                  <img src={equalsIcon} alt="equals" className="image-7" />
-                  <div className="div-block" style={{ 
-                    border: '1px solid #14B951',
-                    borderRadius: '100vw',
-                    padding: '1.111vw',
-                    background: 'transparent',
-                    width: '100%'
-                  }}>
-                    <div className="subtitle" style={{
-                      width:'100%'
-                    }}>
-                      {(inputAmount * 3.333).toFixed(0)}</div>
-                    <div className="subtitle">$FROQ</div>
-                  </div>
+            <div className="ftm">
+              <div 
+                className="div-block-2" 
+                style={{
+                  width: `${progressPercentage}%`,
+                  backgroundColor: '#14B951',
+                  height: '100%',
+                  borderRadius: '100vw',
+                  transition: 'width 0.5s ease-in-out'
+                }}
+              ></div>
+              <div className="subtitle hardcap">{HARDCAP.toLocaleString()} $FTM</div>
+            </div>
+            <div className="flex-block-9" style={{ display: 'flex', gap: '10px' }}>
+              <button 
+                onClick={handleFrogMode} 
+                style={{ 
+                  width: '8vw',
+                  cursor: 'pointer', 
+                  border: '1px solid #14B951',
+                  background: '#14B951',
+                  padding: '0.556vw',
+                  borderRadius: '100vw',
+                  color: 'black',
+                  fontSize: '0.856vw',
+                  fontFamily: 'inherit',
+                  outline: 'none',
+                  transition: 'all 0.3s ease',
+                  textTransform: 'none',
+                  boxShadow: 'none',
+                  WebkitAppearance: 'none',
+                  MozAppearance: 'none'
+                }}
+              >
+                Frog mode
+              </button>
+              {isConnected && balance && (
+                <div className="subtitle" style={{ color: '#14B951' }}>
+                  {Number(balance.formatted).toLocaleString()} $FTM
                 </div>
-                <div style={{marginTop:'1.111vw',display:'flex', columnGap:'1.111vw'}}>
-                <ConnectButton.Custom>
-                  {({
-                    account,
-                    chain,
-                    openConnectModal,
-                    openAccountModal,
-                    mounted,
-                  }) => {
-                    const connected = mounted && account && chain;
-
-                    return (
-                      <div
-                        {...(!mounted && {
-                          'aria-hidden': true,
-                          style: {
-                            opacity: 0,
-                            pointerEvents: 'none',
-                            userSelect: 'none',
-                          },
-                        })}
-                        onClick={connected ? openAccountModal : openConnectModal}
-                        className="connectwallet"
-                        style={{ cursor: 'pointer' }}
-                      >
-                        <div className="body-text black">
-                          {connected ? account.displayName : 'Connect Wallet'}
-                        </div>
-                      </div>
-                    );
-                  }}
-                </ConnectButton.Custom>
-                <button 
-                  onClick={handleJoinPresale}
-                  disabled={!isConnected || inputAmount <= 0 || isPending}
-                  style={{ 
-                    cursor: isConnected && inputAmount > 0 && !isPending ? 'pointer' : 'not-allowed', 
-                    border: '1px solid #14B951',
-                    background: '#14B951',
-                    padding: '1.111vw 1.667vw',
-                    borderRadius: '100vw',
-                    color: 'black',
-                    fontSize: '1.111vw',
-                    fontFamily: 'inherit',
-                    outline: 'none',
-                    transition: 'all 0.3s ease',
-                    textTransform: 'none',
-                    boxShadow: 'none',
-                    WebkitAppearance: 'none',
-                    MozAppearance: 'none',
-                    opacity: isConnected && inputAmount > 0 && !isPending ? 1 : 0.5,
-                    width: '100%'
-                  }}
-                >
-                  {isPending ? 'Confirming...' : 'Join Presale'}
-                </button>
+              )}
+              <div className="flex-block-7">
+                <div className="div-block" style={{ 
+                  border: '1px solid #14B951',
+                  borderRadius: '100vw',
+                  padding: '1.111vw 1.111vw 1.111vw 2.222vw',
+                  background: 'transparent',
+                  width: '100%'
+                }}>
+                  <input
+                    type="number"
+                    value={inputAmount}
+                    onChange={(e) => {
+                      const value = Math.min(Number(e.target.value), MAX_CONTRIBUTION);
+                      setInputAmount(value);
+                    }}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      outline: 'none',
+                      color: '#14B951',
+                      fontSize: 'inherit',
+                      fontFamily: 'inherit',
+                      padding: 0,
+                    }}
+                    min="0"
+                    max={MAX_CONTRIBUTION}
+                  />
+                  <div className="subtitle">$FTM</div>
                 </div>
-
-                
               </div>
+              <ConnectWallet />
             </div>
           </div>
         </div>
