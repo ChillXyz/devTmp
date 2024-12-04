@@ -1,0 +1,231 @@
+/* Burn to Mint Page Styles */
+.section-froq-header {
+  padding-top: 16.667vw;
+}
+
+.container-froq-header {
+  grid-column-gap: 5.556vw;
+  grid-row-gap: 5.556vw;
+  flex-flow: column;
+  display: flex;
+}
+
+.flex-block-5 {
+  grid-column-gap: 2.778vw;
+  grid-row-gap: 2.778vw;
+  width: 59.028vw;
+}
+
+.web3thingydesoputitinherewowpauseimeannvm {
+  grid-column-gap: 2.778vw;
+  grid-row-gap: 2.778vw;
+  background-color: #000501;
+  border-radius: 2.778vw;
+  flex-flow: column;
+  padding: 2.778vw;
+  display: flex;
+}
+
+.flex-block-6 {
+  grid-column-gap: 2.778vw;
+  grid-row-gap: 2.778vw;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-block-10 {
+  grid-column-gap: 1.389vw;
+  grid-row-gap: 1.389vw;
+  flex-flow: column;
+  align-self: stretch;
+  display: flex;
+}
+
+.div-block-3 {
+  width: 100%;
+  height: 1px;
+  background-color: #ffffff;
+  opacity: 0.2;
+  margin: 1vw 0;
+}
+
+.flex-block-12 {
+  grid-column-gap: .694vw;
+  grid-row-gap: .694vw;
+  flex-wrap: wrap;
+  align-items: center;
+  display: flex;
+}
+
+.flex-block-11 {
+  grid-column-gap: 1.389vw;
+  grid-row-gap: 1.389vw;
+  justify-content: flex-end;
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+}
+
+.button-dapp {
+  grid-column-gap: 1.111vw;
+  grid-row-gap: 1.111vw;
+  background-color: #14b951;
+  border: none;
+  border-radius: 100vw;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1.111vw 1.389vw;
+  text-decoration: none;
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button-dapp:hover {
+  background-color: #0f9440;
+}
+
+.connectwallet {
+  grid-column-gap: 1.111vw;
+  grid-row-gap: 1.111vw;
+  background-color: #14b951;
+  border: none;
+  border-radius: 100vw;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1.111vw 1.389vw;
+  text-decoration: none;
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+}
+
+.connectwallet:hover {
+  background-color: #0f9440;
+}
+
+.image-8 {
+  width: 5.556vw;
+  height: 5.556vw;
+  object-fit: cover;
+  border-radius: 1.389vw;
+}
+
+.red {
+  color: #ff4141;
+}
+
+.green {
+  color: #14b951;
+}
+
+.h2-projects {
+  color: #fff;
+  text-align: center;
+  letter-spacing: -.444vw;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: Neuemontreal, Arial, sans-serif;
+  font-size: 11.111vw;
+  font-weight: 400;
+  line-height: 10.556vw;
+}
+
+.h2-projects.align-left {
+  text-align: left;
+}
+
+.subtitle {
+  color: #fff;
+  text-align: left;
+  font-family: Neuemontreal, Arial, sans-serif;
+  font-size: .972vw;
+  line-height: .972vw;
+}
+
+.body-text {
+  color: #fff;
+  letter-spacing: -.022vw;
+  font-family: Neuemontreal, Arial, sans-serif;
+  font-size: 1.111vw;
+  line-height: 1.111vw;
+  text-decoration: none;
+}
+
+.body-text.black {
+  color: #000;
+}
+
+.paragraph {
+  color: #fff;
+  margin-bottom: 0;
+  font-family: Neuemontreal, Arial, sans-serif;
+  font-size: 1.667vw;
+  line-height: 2.333vw;
+}
+
+.w-inline-block {
+  border: 2px solid transparent;
+  border-radius: 1.389vw;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+}
+
+.w-inline-block.selected {
+  border-color: #14b951;
+}
+
+.w-inline-block:hover {
+  transform: scale(1.05);
+}
+
+.button-dapp:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.button-dapp:disabled:hover {
+  background-color: #cccccc;
+}
+
+/* Media Queries */
+@media screen and (max-width: 479px) {
+  .section-froq-header {
+    padding-top: 120px;
+  }
+
+  .container-froq-header {
+    grid-row-gap: 40px;
+  }
+
+  .web3thingydesoputitinherewowpauseimeannvm {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .flex-block-9 {
+    grid-row-gap: 20px;
+  }
+
+  .paragraph {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .button-dapp {
+    padding: 12px 20px;
+  }
+
+  .image-8 {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+  }
+} 

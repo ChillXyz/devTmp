@@ -1,0 +1,25 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "contributePublic",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "contributeWhitelist",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalRaised",
+      "outputs": [{ "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]
+} 
