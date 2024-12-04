@@ -5,7 +5,7 @@ import { fantom } from 'wagmi/chains';
 import Navbar from '../components/Navbar';
 import { ConnectWallet } from '../components/ConnectWallet';
 import backgroundImage from '../assets/images/Frame-961.svg';
-import equalsIcon from '../assets/images/equals.png';
+// import equalsIcon from '../assets/images/equals.png';
 import vector1 from '../assets/images/Vector-1.svg';
 import vector2 from '../assets/images/Vector-2.svg';
 import vector from '../assets/images/Vector.svg';
@@ -30,7 +30,7 @@ const Froq = () => {
     chainId: fantom.id,
   });
 
-  const { writeContract, isPending } = useWriteContract();
+  const { writeContract } = useWriteContract();
 
   // const { data: totalRaisedBigInt } = useReadContract({
   //   address: CONTRACT_ADDRESS,
@@ -190,6 +190,7 @@ const Froq = () => {
               </div>
               <ConnectWallet />
             </div>
+            <button onClick={handleJoinPresale} className="button-froq">Join Presale</button>
           </div>
         </div>
       </div>

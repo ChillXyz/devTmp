@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useAccount, useContractReads, useWriteContract } from 'wagmi';
 import Navbar from '../components/Navbar';
 import { ConnectWallet } from '../components/ConnectWallet';
@@ -105,7 +105,6 @@ const TINY_FROGS_ADDRESS = '0x7e6eef5388261973b0a1aa14e1ca5bbb11cc9a90' as const
 const FROG_BURNER_ADDRESS = '0x16BDf5c8395c3CBBBa559Cd1A7beA668c23B7c33' as const;
 
 const BurnToMint = () => {
-  const navigate = useNavigate();
   const { address } = useAccount();
   const [selectedFrogs, setSelectedFrogs] = useState<string[]>([]);
   const [fantomFrogFamily, setFantomFrogFamily] = useState<NFT[]>([]);
