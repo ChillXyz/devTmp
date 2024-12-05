@@ -94,6 +94,24 @@ const erc721ABI = [
   }
 ];
 
+// FrogBurner ABI for reading total burned counts
+const frogBurnerABI = [
+  {
+    "inputs": [],
+    "name": "totalFFFBurned",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalTinyFBurned",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  }
+] as const;
+
 interface NFT {
   id: string;
   image: string;
@@ -102,7 +120,7 @@ interface NFT {
 
 const FANTOM_FROG_ADDRESS = '0xa70aa1f9da387b815facd5b823f284f15ec73884' as const;
 const TINY_FROGS_ADDRESS = '0x7e6eef5388261973b0a1aa14e1ca5bbb11cc9a90' as const;
-const FROG_BURNER_ADDRESS = '0x16BDf5c8395c3CBBBa559Cd1A7beA668c23B7c33' as const;
+const FROG_BURNER_ADDRESS = '0xceeB10cf37458a630b81C0eEC4F6D391259Cb55C' as const;
 
 const BurnToMint = () => {
   const { address } = useAccount();
@@ -440,6 +458,35 @@ const BurnToMint = () => {
     }
   };
 
+  // Add state for burn counts
+  const [burnCounts, setBurnCounts] = useState({ fff: 0, tiny: 0 });
+
+  // Add contract read for burn counts
+  const { data: burnData } = useContractReads({
+    contracts: [
+      {
+        address: FROG_BURNER_ADDRESS,
+        abi: frogBurnerABI,
+        functionName: 'totalFFFBurned',
+      },
+      {
+        address: FROG_BURNER_ADDRESS,
+        abi: frogBurnerABI,
+        functionName: 'totalTinyFBurned',
+      }
+    ],
+  });
+
+  // Update burn counts when data changes
+  useEffect(() => {
+    if (burnData) {
+      setBurnCounts({
+        fff: Number(burnData[0]?.result || 0),
+        tiny: Number(burnData[1]?.result || 0)
+      });
+    }
+  }, [burnData]);
+
   return (
     <>
       <Navbar />
@@ -456,11 +503,23 @@ const BurnToMint = () => {
                 The Burn-to-Mint Event is here! Burn your Fantom Frog Family or Tinyfrog NFTs and receive $FROQ,
                 the token powering Froqorion's universe.
               </p>
+              
+              <p className="paragraph">
+                Multipliers:
+                Fantom Frog Family 1/1s (25 NFTs) = 5x
+                Fantom Frog Family (1086 NFTs) = 2x
+                Tinyfrog 1/1s (44 NFTs) = 2x
+                Tinyfrog (2178 NFTs) = 1x
+           
+              </p>
             </div>
 
             <div className="w-layout-vflex web3thingydesoputitinherewowpauseimeannvm">
               <div className="w-layout-vflex flex-block-6">
                 <div className="subtitle">BURN <span className="green">FROGS </span>FOR <span className="green">$FROQ</span></div>
+                <div className="subtitle" style={{ fontSize: '0.9em', marginTop: '0.5vw' }}>
+                  <span className="green">{burnCounts.fff}</span> FFF and <span className="green">{burnCounts.tiny}</span> TinyFrogs burned so far
+                </div>
                 <div className="flex items-center justify-center">
                   <ConnectWallet />
                 </div>
@@ -468,7 +527,7 @@ const BurnToMint = () => {
 
               {/* Fantom Frog Family Section */}
               <div className="w-layout-hflex flex-block-10">
-                <p className="paragraph" style={{ color: '#fff', marginBottom: '1vw' }}>
+                <p className="paragraph" style={{ color: '#fff', marginBottom: '0.556vw' }}>
                   Fantom Frog Family {isLoadingFFF ? '(Loading...)' : errorFFF ? `(${errorFFF})` : ''}
                 </p>
                 <div className="div-block-3"></div>
@@ -506,7 +565,7 @@ const BurnToMint = () => {
 
               {/* Tiny Frogs Section */}
               <div className="w-layout-hflex flex-block-10">
-                <p className="paragraph" style={{ color: '#fff', marginBottom: '1vw' }}>
+                <p className="paragraph" style={{ color: '#fff', marginBottom: '0.556vw' }}>
                   tinyfrogs {isLoadingTiny ? '(Loading...)' : errorTiny ? `(${errorTiny})` : ''}
                 </p>
                 <div className="div-block-3"></div>

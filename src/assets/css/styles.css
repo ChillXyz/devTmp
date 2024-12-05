@@ -36,7 +36,6 @@ html, body {
   display: flex;
   width: 100%;
   position: relative;
-  min-height: 15vw;
 }
 
 .main-wrapper {
@@ -691,7 +690,6 @@ html, body {
 
 .paragraph {
   color: #fff;
-  margin-bottom: 10px;
   font-family: Neuemontreal, Arial, sans-serif;
   font-size: 1.667vw;
   line-height: 2.333vw;

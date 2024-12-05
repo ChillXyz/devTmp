@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import Froq from './pages/Froq';
 import BurnToMint from './pages/BurnToMint';
 
-const projectId = '';
+const projectId = 'b73070778cbb9b644dd62f47c1db5203';
 
 const config = createConfig({
   chains: [fantom],

@@ -50,7 +50,6 @@ export function ConnectWallet() {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-black p-6 rounded-lg max-w-[425px] w-full mx-4">
             <div className="mb-4">
-              <h2 className="text-xl font-bold mb-2">Connect Wallet</h2>
               <p className="text-gray-400">Choose your wallet of choice.</p>
             </div>
             <WalletOptions />
