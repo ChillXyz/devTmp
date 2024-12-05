@@ -277,6 +277,8 @@ html, body {
   z-index: -1;
 }
 
+
+
 /* Media Queries */
 @media screen and (max-width: 991px) {
   .section-header {
@@ -359,6 +361,7 @@ html, body {
     gap: 20px;
   }
 }
+
 
 @media screen and (max-width: 479px) {
   .section-header {

@@ -6,7 +6,6 @@
 .container-froq-header {
   grid-column-gap: 5.556vw;
   grid-row-gap: 5.556vw;
-  flex-flow: column;
   display: flex;
   flex-direction: row;
 }
@@ -199,19 +198,33 @@
   background-color: #cccccc;
 }
 
-/* Media Queries */
+.approval-button {
+  width: 100%;
+  padding: 1.111vw 1.389vw;
+  font-size: 1.111vw;
+  line-height: 1.111vw;
+}
+
 @media screen and (max-width: 479px) {
   .section-froq-header {
     padding-top: 120px;
   }
+  
 
   .container-froq-header {
     grid-row-gap: 40px;
+    width:100%;
+    flex-direction: column;
   }
 
   .web3thingydesoputitinherewowpauseimeannvm {
     padding: 20px;
     border-radius: 20px;
+    width:100%;
+  }
+
+  .flex-block-5{
+    width:100%;
   }
 
   .flex-block-9 {
@@ -231,5 +244,47 @@
     width: 80px;
     height: 80px;
     border-radius: 2px;
+  }
+
+  .approval-button {
+    padding: 24px 32px;
+    font-size: 24px;
+    line-height: 28px;
+    margin: 10px 0;
+  }
+}
+
+/* Add this to the end of your CSS file */
+.connect-wallet-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style for the connect wallet button itself */
+.connect-wallet-wrapper button {
+  width: 100%;
+  border-radius: 100vw !important;  /* Match other buttons' rounded edges */
+  padding: 1.111vw 1.389vw !important;  /* Match other buttons' padding */
+  font-size: 1.111vw !important;  /* Match other buttons' font size */
+  line-height: 1.111vw !important;
+}
+
+@media (max-width: 768px) {
+  .connect-wallet-wrapper {
+    margin: 10px 0;
+    padding: 0 10px;
+  }
+  
+  .connect-wallet-wrapper button {
+    padding: 12px 20px !important;  /* Match mobile padding of other buttons */
+    font-size: 16px !important;     /* Match mobile font size */
+    line-height: 24px !important;
+  }
+  
+  .web3thingydesoputitinherewowpauseimeannvm {
+    padding: 20px 10px;
+    min-height: 200px;
   }
 } 

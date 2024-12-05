@@ -2,6 +2,7 @@ import { useAccount, useDisconnect } from 'wagmi';
 import { WalletOptions } from './WalletOptions';
 import { UnlinkIcon } from 'lucide-react';
 import { useState } from 'react';
+import '../assets/css/connectbuttonfix.css';
 
 function truncateAddress(address: string) {
   return `${address.substring(0, 5)}...${address.substring(address.length - 4)}`;
@@ -14,11 +15,11 @@ function DisconnectButton() {
   return (
     <div>
       <button
-        className="whitespace-nowrap p-[1px] z-10 rounded-full bg-gradient-to-r from-[#14B951] to-[#14B951] group"
+        className="connectbuttonfix whitespace-nowrap p-[1px] z-10 rounded-full bg-gradient-to-r from-[#14B951] to-[#14B951] group"
         onClick={() => disconnect()}
         title="Disconnect Wallet"
       >
-        <div className="bg-black/85 py-2 px-7 rounded-full transition group-hover:bg-black/75 text-white flex items-center gap-2">
+        <div className="connectbuttonfix bg-black/85 py-2 px-7 rounded-full transition group-hover:bg-black/75 text-white flex items-center gap-2">
           <UnlinkIcon size={18} />
           {address && truncateAddress(address)}
         </div>
@@ -38,10 +39,10 @@ export function ConnectWallet() {
   return (
     <>
       <button
-        className="whitespace-nowrap p-[1px] z-10 rounded-full bg-gradient-to-r from-[#14B951] to-[#14B951] group"
+        className="connectbuttonfix whitespace-nowrap p-[1px] z-10 rounded-full bg-gradient-to-r from-[#14B951] to-[#14B951] group"
         onClick={() => setIsOpen(true)}
       >
-        <div className="bg-black/85 py-2 px-7 rounded-full transition group-hover:bg-black/75 text-white">
+        <div className="connectbuttonfix bg-black/85 py-2 px-7 rounded-full transition group-hover:bg-black/75 text-white">
           Connect Wallet
         </div>
       </button>

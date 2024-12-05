@@ -491,7 +491,7 @@ const BurnToMint = () => {
     <>
       <Navbar />
       <div className="section-froq-header">
-        <div className="padding-global">
+        <div>
           <div className="container-froq-header">
             <div className="w-layout-vflex flex-block-5">
               <h1 className="h2-projects align-left">
@@ -506,9 +506,13 @@ const BurnToMint = () => {
               
               <p className="paragraph">
                 Multipliers:
+                <br/>
                 Fantom Frog Family 1/1s (25 NFTs) = 5x
+                <br/>
                 Fantom Frog Family (1086 NFTs) = 2x
+                <br/>
                 Tinyfrog 1/1s (44 NFTs) = 2x
+                <br/>
                 Tinyfrog (2178 NFTs) = 1x
            
               </p>
@@ -520,7 +524,7 @@ const BurnToMint = () => {
                 <div className="subtitle" style={{ fontSize: '0.9em', marginTop: '0.5vw' }}>
                   <span className="green">{burnCounts.fff}</span> FFF and <span className="green">{burnCounts.tiny}</span> TinyFrogs burned so far
                 </div>
-                <div className="flex items-center justify-center">
+                <div className="connect-wallet-wrapper">
                   <ConnectWallet />
                 </div>
               </div>
@@ -547,11 +551,11 @@ const BurnToMint = () => {
                     <button
                       onClick={handleApproveFFF}
                       disabled={isApprovingFFF}
+                      className="approval-button"
                       style={{
                         background: '#14B951',
                         color: 'black',
                         border: 'none',
-                        padding: '0.5vw 1vw',
                         borderRadius: '100vw',
                         cursor: isApprovingFFF ? 'wait' : 'pointer',
                         alignSelf: 'center'
@@ -585,11 +589,11 @@ const BurnToMint = () => {
                     <button
                       onClick={handleApproveTiny}
                       disabled={isApprovingTiny}
+                      className="approval-button"
                       style={{
                         background: '#14B951',
                         color: 'black',
                         border: 'none',
-                        padding: '0.5vw 1vw',
                         borderRadius: '100vw',
                         cursor: isApprovingTiny ? 'wait' : 'pointer',
                         alignSelf: 'center'
@@ -603,7 +607,7 @@ const BurnToMint = () => {
 
               
 
-              <div className="w-layout-hflex flex-block-11">
+              <div className="w-layout-vflex flex-block-11">
                 <button className="button-dapp" onClick={handleSelectAll}>
                   <div className="body-text black">
                     {selectedFrogs.length === fantomFrogFamily.length + tinyFrogs.length ? 'Deselect all' : 'Select all'}
